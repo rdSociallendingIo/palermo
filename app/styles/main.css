@@ -1,0 +1,102 @@
+/* app css stylesheet */
+
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+.menu > li:nth-child(1):before {
+  content: "";
+  padding: 0;
+}
+.site-header .jumbotron{background-color:transparent}
+.site-header{
+  position:relative;
+  text-align:center;
+  height:420px;
+  background: url("../images/block_banner.png") no-repeat;
+  background-size: 100% 100%;
+  color:#fff;
+  margin-bottom:0;
+}
+@media screen and (min-width:768px){.site-header{padding-top:20px}.site-header .jumbotron{padding-top:0}}
+@media screen and (min-width:768px){.site-header h1{font-size:56px;text-shadow:-5px 5px 0 rgba(0,0,0,.1)}}
+@media (min-width: 768px){.navbar-form .form-control {width: 350px;}}
+.site-header p{color:#f4f4f4}
+.site-header .fa{color:#a3a3a4;font-size:16px}
+.site-header .fa-close,.site-header .fa-search{position:relative;right:10px;top:18px}
+.site-header .form-group{position:relative;left:0;right:0;margin:auto;}
+.site-header .search-wraper{position:relative;margin-left:auto;margin-right:auto;max-width:680px;margin-top:30px;margin-bottom:39px}
+.site-header .search{color:#fff;-webkit-box-shadow:none;box-shadow:none;font-size:16px;border-radius:0;height:auto;background:#8d58bd;border-radius:40px;}
+.site-header .search::-ms-clear{display:none}
+.site-header .search:focus{-webkit-box-shadow:0 0 6px rgba(0,0,0,.6);box-shadow:0 0 6px rgba(0,0,0,.6)}
+/*.site-header .search+.fa.onX{cursor:pointer}*/
+.site-header .fa-search{position:absolute;right:10px;top:6px;background:url('../images/sousuo.png') no-repeat;width:25px;height:25px;background-size:100% 100%;display:inline-block;
+}
+.site-header span{font-size:14px}
+
+
+.site-header-app .jumbotron{background-color:transparent}
+.site-header-app{
+  position:relative;
+  text-align:center;
+  height:420px;
+  background: url("../images/block_banner_app.png") no-repeat;
+  background-size: 100% 100%;
+  color:#fff;
+  margin-bottom:0;
+}
+@media screen and (min-width:768px){.site-header-app{padding-top:20px}.site-header-app .jumbotron{padding-top:0}}
+@media screen and (min-width:768px){.site-header-app h1{font-size:56px;text-shadow:-5px 5px 0 rgba(0,0,0,.1)}}
+
+.table-responsive>.table>tbody>tr>td, .table-responsive>.table>tbody>tr>th, .table-responsive>.table>tfoot>tr>td, .table-responsive>.table>tfoot>tr>th, .table-responsive>.table>thead>tr>td, .table-responsive>.table>thead>tr>th{
+  word-wrap:break-word;
+  word-break:break-all;
+  white-space: normal;
+}
+.table-responsive>.table>tbody>tr>td:first-child {
+  /*white-space: nowrap;*/
+  min-width: 60px;
+}
+.table-striped>tbody>tr:nth-of-type(odd) {
+    background: #fcf8fd;
+}
+.navbar {
+    background-color: #f4edf5;
+}
+@media screen and (max-width:768px){
+    .site-header-app p{color:#f4f4f4}
+    .site-header-app .fa{color:#a3a3a4;font-size:16px}
+    .site-header-app .fa-close,.site-header-app .fa-search{position:relative;right:10px;top:18px}
+    .site-header-app .form-group{position:relative;left:0;right:0;margin:auto;}
+    .site-header-app .search-wraper{position:relative;margin-left:auto;margin-right:auto;max-width:680px;margin-top:30px;margin-bottom:39px}
+    .site-header-app .search{color:#fff;-webkit-box-shadow:none;box-shadow:none;font-size:14px;border-radius:0;height:auto;background:#8d58bd;border-radius:40px;}
+    .site-header-app .search::-ms-clear{display:none}
+    .site-header-app .search:focus{-webkit-box-shadow:0 0 6px rgba(0,0,0,.6);box-shadow:0 0 6px rgba(0,0,0,.6)}
+    /*.site-header-app .search+.fa.onX{cursor:pointer}*/
+    .site-header-app .fa-search{position:absolute;right:10px;top:6px;background:url('../images/sousuo.png') no-repeat;width:25px;height:25px;background-size:100% 100%;display:inline-block;background-color: #8d58bd;}
+    .site-header-app span{font-size:14px}
+  .navbar .navbar-form {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+}

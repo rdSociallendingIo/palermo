@@ -1,0 +1,162 @@
+<div class="container col-xs-12" style='overflow-x:hidden;'>
+	<div class='row'>
+		<div class='row'>
+			<header class="site-header site-header-app">
+				<div class="jumbotron">
+					<div class="col-xs-12">
+						<div class="search-wraper" role="search">
+							<form name="search_form" ng-controller="mainCtrl" ng-submit="processRequest()">	
+								<div class="form-group input-wrap">
+									<input 
+										class="form-control search clearable" 
+										placeholder="Block High, Transactions Hash, Address, IOU ID"
+										required
+										ng-model='ethRequest' 
+										autocomplete="off" 
+
+									/> 
+									<i class="fa x fa-search"><button type='submit' class="btn btn-success" style='opacity:0;'></button></i>
+								</div>
+							</form>
+						</div>
+						<p style='font-size:24px;margin-bottom:39px;word-spacing:10px;'>Welcome to the SLN Block Explorer!</p>
+					</div>
+					<div class='headerInfo'>
+						<div>
+							<p>Number of Transactions</p>
+							<p>{{totalTransicationscount}}</p>
+						</div>
+						<div>
+							<p>Number of IOU</p>
+							<p>{{accounts}}</p>
+						</div>
+						<div>
+							<p>Latest Block</p>
+							<p>{{blockNum}}</p>
+						</div>
+					</div>
+				</div>
+			</header>
+		</div>
+
+		<div class='row' style='position:relative;'>
+			<div style='width:90%;left:0;right:0;margin:auto;'>
+			    <h4 style="margin-top: 30px;float:left;">
+			      <a  style='float:left;'>
+			      	<i style='float:left;background:url("../images/block.png") no-repeat;width:23px;height:23px;background-size:100% 100%;margin-right:10px;'></i>
+			      	<!-- <i>Latest Block: {{blockNum}}</i> -->
+			      	<i style='float:left;color:#73469A;font-style:normal;margin-top:2.5px;'>Blocks</i>
+			      </a>
+			    </h4>
+			    <table class="table table-striped" cellpadding="0" cellspacing="0" style="padding:0px;float:left;margin:0px;width:100%">
+					 <thead>
+				 		<tr style='background:#f4edf5;'>
+						  <th>Block #</th>
+						  <th>Tx #</th>
+					 	  <th>Size</th>
+						  <th>Timestamp</th>
+						</tr>
+					 </thead>
+				      <tbody>
+						<tr data-ng-repeat="i in blocks">
+						  <td><a href="/#/block/{{i.number}}">{{i.number}}</a></td>
+						  <td>{{i.transactions.length}}</td>
+						  <td>{{i.size}}</td>
+						  <td>{{i.timestamp}}</td>
+					    </tr>
+				      </tbody>
+			    </table>
+		        <h4 style="float:left; margin-top: 30px;">
+		          <a  style='float:left;'>
+		          	<i style='float:left;background:url("../images/transactions.png") no-repeat;width:23px;height:23px;background-size:100% 100%;margin-right:10px;'></i>
+		          	<!-- <i>Latest Block: {{blockNum}}</i> -->
+		          	<i style='float:left;color:#73469A;font-style:normal;margin-top:2.5px;'>Transacions</i>
+		          </a>
+		        </h4>
+		        <div class='tabCon' style='width:100%;overflow-x:scroll;'>
+		        	 <table class="table table-striped" cellpadding="0" cellspacing="0" style="padding:0px;float:left;margin:0px;width:100%">
+		        	    	  <thead>
+		        	    	  		<tr style='background:#f4edf5;'>
+		        	    	  		  <th>Transaction Hash</th>
+		        	    	  		  <th>Block High</th>
+		        	    	  	 	  <th>From</th>
+		        	    	  		  <th>Contracts address</th>
+		        	    	  		</tr>
+		        	    	  </thead>
+		        		      <tbody>
+		        					<tr data-ng-repeat="i in transactions">
+		        					  <td><a href="/#/transaction/{{i.transaction_hash}}">{{i.transaction_hash}}</a></td>
+		        					  <td>{{i.block_high}}</td>
+		        					  <td>{{i.from}}</td>
+		        					  <td>{{i.contracts_address}}</td>
+		        				    </tr>
+		        		      </tbody>
+		        	 </table>
+		        </div>
+			     
+		    </div>
+	    </div>
+    </div>
+</div>
+<style >
+	.site-header .search::-webkit-input-placeholder {
+		color: #ffffff;
+	}
+	.site-header-app .search::-webkit-input-placeholder {
+		color: #ffffff;
+	}
+	.input-wrap {
+		width:400px;
+		height:31px;
+		margin-bottom:39px;
+	}
+	.input-wrap {
+		width:400px;
+		height:31px;
+		margin-bottom:39px;
+	}
+	@media screen and (max-width:768px){
+		.input-wrap {
+			width:350px;
+			max-width: 90%;
+			height:31px;
+			margin-bottom:39px;
+			font-size: 12px;
+		}
+		.input-wrap input {
+			font-size: 12px;
+		}
+	}
+	.table th,td{
+		border:none !important;
+	}
+	.table-striped>tbody>tr:nth-of-type(odd){
+		background:#fff;
+	}
+	.table-striped>tbody>tr:nth-of-type(even){
+		background:#fcf8fd;
+	}
+	.table-striped>tbody>tr td,th{
+		text-align:center;
+	}
+	.table-striped>tbody>tr td:first-child a{
+		color:#995ed1;
+	}
+	.headerInfo{
+		width:60%;
+		display:flex;
+		left:0;
+		right:0;
+		margin:auto;
+	}
+	.headerInfo div{
+		flex:1;
+	}
+	.headerInfo div p:first-child{
+		font-size:14px;
+		color:#D5C6E3;
+	}
+	.headerInfo div p:last-child{
+		font-size:20px;
+	}
+</style>

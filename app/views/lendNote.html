@@ -1,0 +1,153 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid" style="max-width: 1170px;">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#/">HOME</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <form class="navbar-form navbar-left" ng-controller="mainCtrl" ng-submit="processRequest()">
+                <div class="form-group">
+                    <input type="text" name="requestType" required  ng-model="ethRequest"  class="form-control" placeholder="Block Height, Transaction Hash, Address, IOU ID">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+    </div>
+</nav>
+<div style="text-align: center;display: none" id="lendNoteImg">
+    <img src="../images/lendNote.png" alt="" style="width: 72%;margin: auto;max-width: 320px;margin-top: 50px;padding-bottom: 50px;">
+</div>
+
+<div class="container" id="lendNoteContent" style="display: none">
+    <h1>Lend Note
+        <small>View information about a lend note</small>
+    </h1>
+
+    <div id="block-97785883" class="blockdiv table-responsive ">
+
+        <!--<table class="table table-striped" cellpadding="0" cellspacing="0" style="padding:0px;float:left;margin:0px;width:100%">-->
+            <!--<tbody>-->
+            <!--<tr>-->
+                <!--<th colspan="3" align="left">{{lendNoteId}}<span class="pull-right"></span></th>-->
+            <!--</tr>-->
+            <!--</tbody>-->
+        <!--</table>-->
+        <!--<div style="padding-bottom:30px;width:100%;text-align:right;clear:both">-->
+            <!--<button class="btn btn-primary">{{conf}}</button>-->
+            <!--<button class="btn btn-success cb"><span>{{gasUsed}} Gas Used</span></button>-->
+        <!--</div>-->
+        <table class="table table-striped">
+            <tbody><tr>
+                <th colspan="2" style="text-align:left">lendNote Summary</th>
+            </tr>
+            <tr>
+                <td>ID</td>
+                <td>{{lendNoteId}}</td>
+            </tr>
+            <tr>
+                <td>publish Time</td>
+                <td>
+                    {{basicData.publishTime*1000 | date:'yyyy-MM-dd HH:mm:ss'}}
+                </td>
+            </tr>
+            <tr>
+                <td>repay Time</td>
+                <td>
+                    {{basicData.repayTime*1000 | date:'yyyy-MM-dd HH:mm:ss'}}
+                </td>
+            </tr>
+            <tr>
+                <td>loanStatus</td>
+                <td>{{lendNoteStatus.en[basicData.loanStatus]}}</td>
+            </tr>
+            <tr>
+                <td>borrower</td>
+                <td>{{basicData.borrower}}</td>
+            </tr>
+            <tr>
+                <td>lender</td>
+                <td>{{basicData.lender}}</td>
+            </tr>
+            <tr>
+                <td>lend amount</td>
+                <td>{{basicData.balance}}</td>
+            </tr>
+            <tr>
+                <td>interest</td>
+                <td>{{basicData.interest}}</td>
+            </tr>
+
+            <tr>
+                <td>lendEffectTime</td>
+                <td>{{basicData.lendEffectTime*1000 | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+            </tr>
+
+            <tr>
+                <td>actualRepayTime</td>
+                <td>{{basicData.actualRepayTime*1000 | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+            </tr>
+
+            <tr>
+                <td>lendMd5</td>
+                <td>{{basicData.lendMd5}}</td>
+            </tr>
+
+            <tr>
+                <td>repayMd5</td>
+                <td>{{basicData.repayMd5}}</td>
+            </tr>
+
+            <tr>
+                <td>isAppeal</td>
+                <td>{{basicData.isAppeal==1?'yes':'no'}}</td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <h2 style="margin-top: 30px;">
+        State
+        <small>- contained in current Lend Note</small>
+    </h2>
+
+    <div class="table-responsive" ng-repeat="tx in lendNoteStatusArray">
+        <table class="table table-striped">
+            <tbody>
+            <tr>
+                <th colspan="2" style="text-align:left">State #{{$index+1}}</th>
+            </tr>
+            <tr>
+                <td>Lend Note Id</td>
+                <td>{{tx.iouId}}</td>
+            </tr>
+            <tr>
+                <td>Original state</td>
+                <td>{{lendNoteStatus.en[tx.iouOriginStatus]}}</td>
+                <!--<td><a href="./#/address/{{tx.from}}">{{tx.from}}</a></td>-->
+            </tr>
+            <tr>
+                <td>Target state</td>
+                <td>{{lendNoteStatus.en[tx.iouTargetStatus]}}</td>
+                <!--<td><a href="./#/address/{{tx.to}}">{{tx.to}}</a></td>-->
+            </tr>
+            <tr>
+                <td>State of complaint</td>
+                <td>{{tx.iouAppealStatus==1?'yes':'no'}}</td>
+            </tr>
+            <tr>
+                <td>Trade number</td>
+                <td><a href="./#/transaction/{{tx.txHash}}">{{tx.txHash}}</a></td>
+            </tr>
+            </tbody>
+        </table>
+        <hr>
+    </div>
+
+</div>
